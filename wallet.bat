@@ -1,7 +1,7 @@
 @echo off
 :: ============================================================
-::  BiCrypto - Wallet Admin Balance Checker & Withdrawal Tool
-::  Version 5.2.0 | CodeCanyon License
+::   - Wallet Admin Balance Checker & Withdrawal Tool
+::  
 :: ============================================================
 ::  HOW TO RUN:
 ::    Double-click wallet.bat
