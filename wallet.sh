@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ============================================================
-#  — Wallet Admin Balance Checker & Withdrawal Tool
-#  
+#Wallet Admin Balance Checker & Withdrawal Tool
+
 # ============================================================
 #  HOW TO RUN:
 #    chmod +x wallet.sh
