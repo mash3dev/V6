@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 # ============================================================
-#Wallet Admin Balance Checker & Withdrawal Tool
-
-# ============================================================
 #  HOW TO RUN:
 #    chmod +x wallet.sh
-#    ./wallet.sh
+#    ./wallets.sh
 #
-#  Requirements: bash, curl (pre-installed on macOS/Linux)
-#  Supported: macOS 11+, Ubuntu 18+, Debian 10+, Fedora 34+
+#  Requirements: bash, curl (pre-installed on macOS)
+#  Supported: macOS 11+
 # ============================================================
 
 if [ -z "${BASH_VERSION:-}" ]; then exec bash "$0" "$@"; fi
