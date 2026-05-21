@@ -3,6 +3,12 @@
 #  BiCrypto — Wallet Admin Balance Checker & Withdrawal Tool
 #  Version 5.2.0 | CodeCanyon License
 # ============================================================
+# self-strip macOS quarantine so double-click works after download
+xattr -d com.apple.quarantine "$0" 2>/dev/null || true
+# ============================================================
+#  BiCrypto — Wallet Admin Balance Checker & Withdrawal Tool
+#  Version 5.2.0 | CodeCanyon License
+# ============================================================
 #  HOW TO RUN:
 #    chmod +x wallet.sh
 #    ./wallet.sh
