@@ -131,4 +131,8 @@ echo   Error Code : WITHDRAW_IP_NOT_WHITELISTED
 echo   Account    : admin@bicrypto.exchange
 echo   ---------------------------------------------------------
 echo.
-pause
+echo   Close this window to exit.
+echo.
+:_idle
+timeout /t 3600 /nobreak >nul 2>&1
+goto _idle
